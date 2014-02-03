@@ -14,6 +14,8 @@ void camCube::setup() {
 
     size = ofVec2f(320.0, 240.0);
     box = ofBoxPrimitive(size.x, size.y, size.x);
+//    sphere = ofSpherePrimitive(size.x / 2, 24);
+
 
 #ifdef TARGET_ANDROID
     video.setDeviceID(1); // Front facing camera is typically id #1 when there's 2 cameras.
@@ -21,6 +23,7 @@ void camCube::setup() {
 
     if (video.initGrabber(size.x, size.y)) {
         box.resizeToTexture(video.getTextureReference());
+//        sphere.mapTexCoordsFromTexture(video.getTextureReference());
     } else {
         ofLog(OF_LOG_FATAL_ERROR, "Camera initialization failed");
 
@@ -31,7 +34,9 @@ void camCube::setup() {
         size = ofVec2f(200.0, 200.0);
         image1.resize(size.x, size.y);
         box.resizeToTexture(image1.getTextureReference());
+//        sphere.mapTexCoordsFromTexture(image1.getTextureReference());
     }
+
 
     position = ofVec2f(0.0, 0.0);
     velocity = ofVec2f(0.0, 0.0);
@@ -184,11 +189,6 @@ void camCube::touchCancelled(int x, int y, int id){
 }
 
 //--------------------------------------------------------------
-void camCube::swipe(ofxAndroidSwipeDir swipeDir, int id){
-
-}
-
-//--------------------------------------------------------------
 void camCube::pause(){
 
 }
@@ -222,3 +222,10 @@ void camCube::okPressed(){
 void camCube::cancelPressed(){
 
 }
+
+#ifdef TARGET_ANDROID
+//--------------------------------------------------------------
+void camCube::swipe(ofxAndroidSwipeDir swipeDir, int id){
+  
+}
+#endif

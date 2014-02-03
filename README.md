@@ -1,10 +1,14 @@
 camCube
 ======
-This is an android app which draws a bouncing box with the camera contents on it.
+Draws a bouncing box with the camera contents on it.
 
 Install
 -------
-Just install the camCube.apk from the bin directory if you want to try the app.
+To dowload and install a precompiled binary:
+
+MacOS, unzip the camCube.app.zip from bin directory.
+
+For Android, install the camCube.apk from the bin directory. You'll need to enable unknown app sources on your device.
 
 Development
 -----------

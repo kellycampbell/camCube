@@ -1,2 +1,2 @@
-ofxAndroid
-ofxAccelerometer
+#ofxAndroid
+#ofxAccelerometer

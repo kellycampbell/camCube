@@ -1,10 +1,17 @@
 #pragma once
 
 #include "ofMain.h"
+
+#ifdef TARGET_ANDROID
 #include "ofxAndroid.h"
+#endif
 
-class camCube : public ofxAndroidApp {
-
+#ifdef TARGET_ANDROID
+  class camCube : public ofxAndroidApp {
+#else
+  class camCube : public ofBaseApp {
+#endif
+    
     public:
         void setup();
         void update();
@@ -14,14 +21,11 @@ class camCube : public ofxAndroidApp {
         void keyReleased(int key);
         void windowResized(int w, int h);
 
-
-        // Some of these are Android specific TODO(kellyc): document which ones
         void touchDown(int x, int y, int id);
         void touchMoved(int x, int y, int id);
         void touchUp(int x, int y, int id);
         void touchDoubleTap(int x, int y, int id);
         void touchCancelled(int x, int y, int id);
-        void swipe(ofxAndroidSwipeDir swipeDir, int id);
 
         void pause();
         void stop();
@@ -32,6 +36,10 @@ class camCube : public ofxAndroidApp {
         void okPressed();
         void cancelPressed();
 
+#ifdef TARGET_ANDROID
+        void swipe(ofxAndroidSwipeDir swipeDir, int id);
+#endif
+    
         ofVec2f size;
         ofVec2f position;
         ofVec2f velocity;
@@ -41,6 +49,7 @@ class camCube : public ofxAndroidApp {
         ofVideoGrabber video;
         ofImage image1;
         ofBoxPrimitive box;
+        ofSpherePrimitive sphere;
 
     private:
         void applyForce(ofVec2f force);
